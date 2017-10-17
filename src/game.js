@@ -1,4 +1,4 @@
-import MainState from './states/main';
+import { MainState } from './states/main';
 
 var game = new Phaser.Game(600, 400, Phaser.AUTO, 'game');
 
