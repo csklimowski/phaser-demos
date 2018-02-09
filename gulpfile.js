@@ -8,9 +8,11 @@ var connect = require('gulp-connect');
 gulp.task('build', function() {
 	gulp.src('./src/**/*.js')
 		.pipe(rollup({
-	  		input: './src/game.js',
-			format: 'iife',
-			name: 'game'
+			input: './src/game.js',
+			output: {
+				format: 'iife',
+				name: 'game'
+			}
 		}))
 		.pipe(babel({
 			presets: ['es2015']
@@ -23,8 +25,10 @@ gulp.task('bundle', function() {
 	gulp.src('./src/**/*.js')
 		.pipe(rollup({
 	  		input: './src/game.js',
-			format: 'iife',
-			name: 'game'
+			output: {
+				format: 'iife',
+				name: 'game'
+			}
 		}))
 		.pipe(gulp.dest('js'))
 		.pipe(connect.reload());
@@ -38,7 +42,7 @@ gulp.task('serve', function() {
 });
 
 gulp.task('watch', function() {
-	gulp.watch(['./src/**'], ['build']);
+	gulp.watch(['./src/**'], ['bundle']);
 })
 
 gulp.task('develop', ['bundle', 'serve', 'watch']);
