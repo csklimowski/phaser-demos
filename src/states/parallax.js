@@ -31,7 +31,7 @@ export class ParallaxState extends Phaser.State {
 	}
 
 	update() {
-		let dt = game.time.elapsedMS / 100;
+		let dt = game.time.elapsedMS / 1000;
 		let p = this.player;
 		// player movement
 		let targetVx   = 0;
@@ -42,17 +42,17 @@ export class ParallaxState extends Phaser.State {
 			targetVx   = 0; 
 			targetSkew = 0;
 		} else if (leftDown) {
-			targetVx   = -30;
+			targetVx   = -300;
 			targetSkew = 8;
 		} else if (rightDown) {
-			targetVx   = 30;
+			targetVx   = 300;
 			targetSkew = -8;
 		} else {
 			targetVx   = 0;
 			targetSkew = 0;
 		}
-		p.vx   += 0.6*(targetVx - p.vx)*dt;
-		p.skew += 0.6*(targetSkew - p.skew)*dt;
+		p.vx   += 6*(targetVx - p.vx)*dt;
+		p.skew += 6*(targetSkew - p.skew)*dt;
 		p.x += p.vx*dt;
         p.y += p.vy*dt;
         

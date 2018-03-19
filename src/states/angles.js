@@ -12,19 +12,19 @@ export class AnglesState extends Phaser.State {
 	}
 
 	update() {
-		let dt = game.time.elapsedMS / 100;
+		let dt = game.time.elapsedMS / 1000;
 		let ship = this.ship;
 
 		if (game.input.activePointer.isDown) {
 			if (ship.x < game.input.x) {
-				ship.x += 20*dt;
+				ship.x += 200*dt;
 			} else {
-				ship.x -= 20*dt;
+				ship.x -= 200*dt;
 			}
 			if (ship.y < game.input.y) {
-				ship.y += 20*dt;
+				ship.y += 200*dt;
 			} else {
-				ship.y -= 20*dt;
+				ship.y -= 200*dt;
 			}
 		}
 
