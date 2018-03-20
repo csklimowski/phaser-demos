@@ -27,11 +27,11 @@ export class EasingState extends Phaser.State {
         let object = this.object;
         let target = this.target;
 
-        // instant
+        // instant transition
         object.x = target.x;
         object.y = target.y;
 
-        // ease-out
+        // ease-out transition
         // object.x += 5*(target.x - object.x)*dt;
         // object.y += 5*(target.y - object.y)*dt;
         
