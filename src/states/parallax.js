@@ -23,10 +23,10 @@ export class ParallaxState extends Phaser.State {
 		let bg2 = game.add.image(0, 0, 'bg2');
 		let bg1 = game.add.image(0, 0, 'bg1');
 
-		//bg1.depth = 0;
-		//bg2.depth = 0.2;
-		//bg3.depth = 0.4;
-
+		bg1.depth = 0;
+		bg2.depth = 0.2;
+		bg3.depth = 0.4;
+		
 		this.backgrounds = [bg1, bg2, bg3];
 
 		this.graphics = game.add.graphics(0, 0);
@@ -40,6 +40,7 @@ export class ParallaxState extends Phaser.State {
 		let targetSkew = 0;
 		let leftDown   = game.input.keyboard.isDown(Phaser.KeyCode.LEFT);
 		let rightDown  = game.input.keyboard.isDown(Phaser.KeyCode.RIGHT);
+
 		if (leftDown && rightDown) {
 			targetVx   = 0; 
 			targetSkew = 0;
@@ -53,17 +54,16 @@ export class ParallaxState extends Phaser.State {
 			targetVx   = 0;
 			targetSkew = 0;
 		}
+
 		p.vx   += 6*(targetVx - p.vx)*dt;
 		p.skew += 6*(targetSkew - p.skew)*dt;
 		p.x += p.vx*dt;
         p.y += p.vy*dt;
         
 		game.camera.x = p.x - 275;
-		
-        // parallax effect
-		// for (let bg of this.backgrounds) {
-		// 	bg.x = game.camera.x*bg.depth;
-		// }
+		for (let bg of this.backgrounds) {
+			bg.x = game.camera.x*bg.depth;
+		}
 		
 		let g = this.graphics;
 		g.clear();

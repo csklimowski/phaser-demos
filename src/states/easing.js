@@ -6,7 +6,7 @@ export class EasingState extends Phaser.State {
 		game.stage.backgroundColor = 0xDDDDDD;
 		this.object = {
             x: 300,
-            y: 200,
+            y: 200
         }
         this.target = {
             x: 300,
@@ -27,13 +27,8 @@ export class EasingState extends Phaser.State {
         let object = this.object;
         let target = this.target;
 
-        // instant transition
-        object.x = target.x;
-        object.y = target.y;
-
-        // ease-out transition
-        // object.x += 5*(target.x - object.x)*dt;
-        // object.y += 5*(target.y - object.y)*dt;
+        object.x += 5*(target.x - object.x)*dt;
+        object.y += 5*(target.y - object.y)*dt;
         
         let g = this.graphics;
         g.clear();
