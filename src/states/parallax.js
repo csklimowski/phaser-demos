@@ -58,8 +58,8 @@ export class ParallaxState extends Phaser.State {
 		p.vx   += 6*(targetVx - p.vx)*dt;
 		p.skew += 6*(targetSkew - p.skew)*dt;
 		p.x += p.vx*dt;
-        p.y += p.vy*dt;
-        
+		p.y += p.vy*dt;
+		
 		game.camera.x = p.x - 275;
 		for (let bg of this.backgrounds) {
 			bg.x = game.camera.x*bg.depth;
